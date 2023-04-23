@@ -1,0 +1,35 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-PatientsMicroserviceApplication<patients-microservice>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "deronzier.remi.patientsmicroservice.PatientsMicroserviceApplication",
+      "projectName": "patients-microservice",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=63201 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=patients-microservice"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-ReportsMicroserviceApplication<reports-microservice>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "deronzier.remi.reportsmicroservice.ReportsMicroserviceApplication",
+      "projectName": "reports-microservice",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-NotesMicroserviceApplication<notes-microservice>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "deronzier.remi.notesmicroservice.NotesMicroserviceApplication",
+      "projectName": "notes-microservice",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

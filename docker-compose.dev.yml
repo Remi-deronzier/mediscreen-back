@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  mysqldb:
+    image: mysql:8.0.33
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    env_file: ./patients-microservice/.env.dev
+    volumes:
+      - type: volume
+        source: mysqldev
+        target: /var/lib/mysql
+  mongodb:
+    image: mongo
+    restart: always
+    volumes:
+      - type: volume
+        source: mongodev
+        target: /data/db
+  patients-microservice:
+    image: remax21/patients-microservice
+    env_file: ./patients-microservice/.env.dev
+    ports:
+      - 8081:8081
+    depends_on:
+      - mysqldb
+  notes-microservice:
+    image: remax21/notes-microservice
+    env_file: ./notes-microservice/.env.dev
+    ports:
+      - 8082:8082
+    depends_on:
+      - mongodb
+  reports-microservice:
+    image: remax21/reports-microservice
+    env_file: ./reports-microservice/.env.dev
+    ports:
+      - 8080:8080
+    depends_on:
+      - patients-microservice
+      - notes-microservice
+
+volumes:
+  mysqldev:
+  mongodev:
